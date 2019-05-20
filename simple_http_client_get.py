@@ -43,8 +43,10 @@ try:
     sock.sendall(message_get.encode())
     # Receive data
     data = readrequest(sock)
+    # split received data into two parts
     [head,body]=data.split(b'\r\n\r\n')
     print (head)
+    # the body is compressed by gzip, so it need decompress
     print (gzip.decompress(body))
 
 except Exception as e:

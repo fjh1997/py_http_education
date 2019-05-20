@@ -36,7 +36,7 @@ try:
     # Create a socket，and wrap in ssl
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # Connect the socket to the port 443 on www.yvsou.com
+    # Connect the socket to the port 443 on yvsou.com
     sock = context.wrap_socket(s, server_hostname='www.yvsou.com')
     server_address = ('www.yvsou.com', 443)
     print ('Connecting to www.yvsou.com on port 443')
@@ -46,8 +46,10 @@ try:
     sock.sendall(message_get.encode())
     # Receive data
     data = readrequest(sock)
+    # split received data into two parts
     [head,body]=data.split(b'\r\n\r\n')
     print (head)
+    # the body is compressed by gzip, so it need decompress
     print (gzip.decompress(body))
     
 
