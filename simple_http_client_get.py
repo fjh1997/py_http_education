@@ -34,7 +34,7 @@ def readrequest(s):
 try:
     # Create a socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # Connect the socket to the port 9999 on localhost
+    # Connect the socket to the port 80 on www.zstu.edu.cn
     server_address = ('www.zstu.edu.cn', 80)
     print ('Connecting to www.zstu.edu.cn on port 80')
     sock.connect(server_address)
