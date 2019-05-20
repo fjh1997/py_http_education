@@ -33,10 +33,10 @@ def readrequest(s):
 
 #Send GET request
 try:
-    # Create a socket
+    # Create a socket，and wrap in ssl
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # Connect the socket to the port 9999 on localhost
+    # Connect the socket to the port 443 on www.yvsou.com
     sock = context.wrap_socket(s, server_hostname='www.yvsou.com')
     server_address = ('www.yvsou.com', 443)
     print ('Connecting to www.yvsou.com on port 443')
